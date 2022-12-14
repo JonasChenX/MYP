@@ -62,3 +62,76 @@ export default{
     isInteger, //檢查value是否為整數
     isNotNegativeFloatNum, //檢查value是否為浮點數
 }
+
+export const decodeFunMenus = [
+    {
+        "meta":{
+            "label": "判斷資料是不是除了symbol外的原始資料",
+            "content": "isStatic(value)",
+            "fun":isStatic
+        },
+    },
+    {
+        "meta":{
+            "label": "判斷資料是不是原始資料",
+            "content": "isPrimitive(value)",
+            "fun":isPrimitive
+        },
+    },
+    {
+        "meta":{
+            "label": "判斷是不是引用類型的資料",
+            "content": "isObject(value)",
+            "fun":isObject
+        },
+    },
+    {
+        "meta":{
+            "label": "判斷資料是不是Object類型的資料",
+            "content": "isPlainObject(value)",
+            "fun":isPlainObject
+        },
+    },
+    {
+        "meta":{
+            "label": "檢查value是不是函數",
+            "content": "isFunction(value)",
+            "fun":isFunction
+        },
+    },
+    {
+        "meta":{
+            "label": "檢查value是否為有效的類陣列長度",
+            "content": "isLength(value)",
+            "fun":isLength
+        },
+    },
+    {
+        "meta":{
+            "label": "檢查value是否是類陣列",
+            "content": "isArrayLike(value)",
+            "fun":isArrayLike
+        },
+    },
+    {
+        "meta":{
+            "label": "檢查value是否為負數",
+            "content": "isNegativeNum(value)",
+            "fun":isNegativeNum
+        },
+    },
+    {
+        "meta":{
+            "label": "檢查value是否為整數",
+            "content": "isInteger(value)",
+            "fun":isInteger
+        },
+    },
+    {
+        "meta":{
+            "label": "檢查value是否為浮點數",
+            "content": "isNotNegativeFloatNum(value)",
+            "fun":isNotNegativeFloatNum
+        },
+    },
+]

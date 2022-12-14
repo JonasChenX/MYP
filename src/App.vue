@@ -1,20 +1,17 @@
 <template>
   <navbar/>
   <breadcrumb/>
-  <title-card/>
   <router-view/>
   <notifications />
 </template>
 <script>
-import navbar from '@/core/navber/navbar.vue'
+import navbar from '@/core/navbar/navbar.vue'
 import breadcrumb from '@/core/breadcrumb/breadcrumb.vue'
-import titleCard from '@/common/componts/titleCard.vue'
 
 export default {
   components:{
     navbar,
     breadcrumb,
-    titleCard
   }
   
 }

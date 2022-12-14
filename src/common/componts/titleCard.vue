@@ -11,12 +11,16 @@ import router from '@/router'
 import { ref } from '@vue/reactivity';
 import { watch } from '@vue/runtime-core';
 export default {
-    setup(){
+    props:{
+        title:String
+    },
+    setup(props){
 
-        let pathName = ref("");
-        watch(router.currentRoute, to => {
-            pathName.value = to.meta.label
-        })
+        let pathName = ref(props.title);
+        // watch(router.currentRoute, to => {
+        //     console.log(to);
+        //     pathName.value = to.meta.label
+        // })
 
         return{
             pathName

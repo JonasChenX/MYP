@@ -45,5 +45,44 @@
                 }
             }
         ]
+    },
+    {
+        "id":7,
+        "meta":{
+            "directory": true,
+            "icon": "",
+            "label": "vue元件觀念"
+        },
+        "children": [
+            {
+                "id": 6,
+                "path": "/myp301",
+                "meta": {
+                  "functionId": "MYP301",
+                  "label": "頁面切換",
+                  "icon": "tasks"
+                },
+                "children": [
+                    {
+                        "id": 8,
+                        "path": "/myp301/a",
+                        "meta": {
+                          "functionId": "MYP301A",
+                          "label": "aaaaaa",
+                          "icon": "tasks"
+                        }
+                    },
+                    {
+                        "id": 9,
+                        "path": "/myp301/b",
+                        "meta": {
+                          "functionId": "MYP301B",
+                          "label": "bbbbbb",
+                          "icon": "tasks"
+                        }
+                    }
+                ]
+            }
+        ]
     }
 ]
