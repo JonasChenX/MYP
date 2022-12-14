@@ -1,10 +1,24 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <navbar/>
+  <breadcrumb/>
+  <title-card/>
   <router-view/>
+  <notifications />
 </template>
+<script>
+import navbar from '@/core/navber/navbar.vue'
+import breadcrumb from '@/core/breadcrumb/breadcrumb.vue'
+import titleCard from '@/common/componts/titleCard.vue'
+
+export default {
+  components:{
+    navbar,
+    breadcrumb,
+    titleCard
+  }
+  
+}
+</script>
 
 <style lang="scss">
 #app {
