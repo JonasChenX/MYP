@@ -13,12 +13,23 @@ const getRawType = (value) => {
     return Object.prototype.toString.call(value).slice(8, -1)
 }
 
+//將map相反過來
+const createReversedMap = (map) => {
+    return Object.keys(map).reduce((prev, key) => {
+      const value = map[key]
+      prev[value] = key
+      return prev
+    }, {})
+}
+
+
 
 
 
 export default {
     
     getUuid, //產生UUID    
+    createReversedMap, //將map相反過來
     
 }
 

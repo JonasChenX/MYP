@@ -82,6 +82,52 @@
                         }
                     }
                 ]
+            },
+            {
+                "id":10,
+                "path": "/myp302",
+                "meta":{
+                    "functionId": "MYP302",
+                    "icon": "",
+                    "label": "vue元件遞迴"
+                }
+            },
+            {
+                "id":11,
+                "path": "/myp303",
+                "meta":{
+                    "functionId": "MYP303",
+                    "icon": "",
+                    "label": "跨元件(兄弟層)傳遞"
+                }
+            },
+            {
+                "id":14,
+                "path": "/myp304",
+                "meta":{
+                    "functionId": "MYP304",
+                    "icon": "",
+                    "label": "操作DOM方式"
+                }
+            }
+        ]
+    },
+    {
+        "id":12,
+        "meta":{
+            "directory": true,
+            "icon": "",
+            "label": "模組元件"
+        },
+        "children":[
+            {
+                "id":13,
+                "path": "/myp401",
+                "meta":{
+                    "functionId": "MYP401",
+                    "icon": "",
+                    "label": "模組元件範例"
+                }
             }
         ]
     }

@@ -1,26 +1,28 @@
 <template>
     <!-- 參考資料:https://ithelp.ithome.com.tw/articles/10271305  -->
     <title-card :title="pathName" />
-    <keep-alive :include="keepAliveComponents">
-      <component
-        :is="`Step${currentStep}`"
-        :inputData="inputData"
-        @change-step="changeStep"
-        @update-data="updateData"
-      />
-    </keep-alive>
     <div class="mt-5">
-        <h3>資料緩存示範</h3>
-        <router-view v-if="!$route.meta.keepAlive" />
-        <router-view v-slot="{ Component }">
-            <keep-alive>
-            <component v-if="$route.meta.keepAlive" :is="Component" />
-            </keep-alive>
-        </router-view>
-        <div class="mt-2">
-            <button @click="$router.push('/myp301/a')">Go to A</button>
-            <button @click="$router.push('/myp301/b')">Go to B</button>
-        </div>
+      <keep-alive :include="keepAliveComponents">
+            <component
+              :is="`Step${currentStep}`"
+              :inputData="inputData"
+              @change-step="changeStep"
+              @update-data="updateData"
+            />
+      </keep-alive>
+    </div>
+    <div class="mt-5">
+      <h3>資料緩存示範</h3>
+      <router-view v-if="!$route.meta.keepAlive" />
+      <router-view v-slot="{ Component }">
+          <keep-alive>
+          <component v-if="$route.meta.keepAlive" :is="Component" />
+          </keep-alive>
+      </router-view>
+      <div class="mt-2" v-if="$route.name == 'myp301'">
+          <button @click="$router.push('/myp301/a')">Go to A(返回後會緩存資料)</button>
+          <button @click="$router.push('/myp301/b')">Go to B(返回後不會緩存資料)</button>
+      </div>
     </div>
 </template>
 

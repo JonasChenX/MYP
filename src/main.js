@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import mitt from 'mitt'
 
 //引入bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -19,10 +20,14 @@ import Notifications from '@kyvg/vue3-notification'
 //引入RadialProgress 
 import RadialProgress from "vue3-radial-progress";
 
-createApp(App)
+const app = createApp(App)
     .use(store)
     .use(router)
     .use(Notifications)
     .use(RadialProgress)
     .component('font-awesome-icon', FontAwesomeIcon)
-    .mount('#app')
+    
+// 把 mitt 加入 Vue 的全域 Property，讓任何一個元件都能使用
+app.config.globalProperties.$eventBus = mitt();
+
+app.mount('#app')

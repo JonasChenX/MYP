@@ -34,63 +34,54 @@ export{
 
 export const funMainMenu = [
     {
-        "id":1,
         "meta":{
             "label": "判斷方法",
             "name": "decodeFunCom",
         },
     },
     {
-        "id":2,
         "meta":{
             "label": "字串相關方法",
             "name": "strFunCom",
         },
     },
     {
-        "id":3,
         "meta":{
             "label": "數字日期相關方法",
             "name": "numAndDateFunCom",
         },
     },
     {
-        "id":4,
         "meta":{
             "label": "陣列相關方法",
             "name": "arrFunCom",
         },
     },
     {
-        "id":5,
         "meta":{
             "label": "瀏覽器相關方法",
             "name": "bowserFunCom",
         },
     },
     {
-        "id":6,
         "meta":{
             "label": "其他常用方法",
             "name": "otherFunCom",
         },
     },
     {
-        "id":7,
         "meta":{
             "label": "儲存暫存相關方法",
             "name": "storageFunCom",
         },
     },
     {
-        "id":8,
         "meta":{
             "label": "創建枚舉方法",
             "name": "enumFunCom",
         },
     },
     {
-        "id":9,
         "meta":{
             "label": "正則表達式匹配方法",
             "name": "regexFunCom",
