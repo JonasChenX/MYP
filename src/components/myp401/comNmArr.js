@@ -14,5 +14,12 @@ export const comNmArr = [
             "name": "sameGroup",
         },
     },
+    {
+        "id":3,
+        "meta":{
+            "label": "五星好評",
+            "name": "showStars",
+        },
+    },
     
 ]
