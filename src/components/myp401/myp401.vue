@@ -16,12 +16,15 @@
 <script>
 import { comNmArr } from '@/components/myp401/comNmArr'
 import sidebar from '@/core/sidebar/sidebar.vue'
+//進度條元件
 import progressStepsMain from '@/components/myp401/com-1/progressStepsMain.vue'
+import sameGroup from '@/components/myp401/com-2/sameGroup.vue'
 import { ref } from '@vue/reactivity'
 export default {
     components:{
         sidebar,
-        progressStepsMain
+        progressStepsMain,
+        sameGroup
     },
     setup(){
 
@@ -33,7 +36,7 @@ export default {
         return{
             comNmArr,
             getMenuName,
-            curSideBarName
+            curSideBarName,
         }
     }
 }

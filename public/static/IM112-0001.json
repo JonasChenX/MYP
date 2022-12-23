@@ -1,0 +1,260 @@
+{
+  "model": {
+    "orgCd": "",
+    "taxRtnTp": "",
+    "dataYr": "",
+    "orgnTp": "",
+    "stkLstOtcMk": "",
+    "saleAmtTotalStart": "",
+    "saleAmtTotalEnd": "",
+    "capitalStart": "",
+    "capitalEnd": "",
+    "zapShRefStart": "",
+    "zapShRefEnd": "",
+    "sSaleSaleRate": "",
+    "lPrsBusiCntM1": "",
+    "sAddRate": "",
+    "sPrsVouchAmt": "",
+    "sPrsVouchRate": "",
+    "bscdTimeStart": "",
+    "bscdTimeEnd": "",
+    "excludeBscdTimeStart": "",
+    "excludeBscdTimeEnd": "",
+    "checklistParentBscd": "",
+    "checklistBscd": ""
+  },
+  "schema": {
+    "groups": [
+      {
+        "fields": 
+          {
+            "type": "checklistForOrgCd",
+            "label": "機關代號",
+            "model": "orgCd",
+            "required": true
+          }
+        
+      },
+      {
+        "fields": 
+          {
+            "type": "checklistForOrgCd",
+            "label": "申報類別",
+            "model": "taxRtnTp"
+          }
+        
+      },
+      {
+        "fields": {
+          "type": "input",
+          "label": "資料年度(YYY)",
+          "inputType": "year",
+          "maxLength": 3,
+          "required": true,
+          "model": "dataYr",
+          "isCol_12":true
+        }
+      },
+      {
+        "fields": 
+          {
+            "type": "rangeInput",
+            "label": "營業收入級距",
+            "model": "saleAmtTotal",
+            "isCol_12":true,
+            "analyzeSQLColumn": "營利事業營業收入淨額",
+            "child": [
+              {
+                "inputType": "money",
+                "required": true,
+                "maxLength": 8,
+                "model": "saleAmtTotalStart"
+              },
+              {
+                "inputType": "money",
+                "maxLength": 3,
+                "model": "saleAmtTotalEnd"
+              }
+            ]
+          }
+        
+      },
+      {
+        "fields": 
+          {
+            "type": "rangeInput",
+            "label": "資本額級距",
+            "model": "capital",
+            "isCol_12":true,
+            "child": [
+              {
+                "inputType": "money",
+                "maxLength": 3,
+                "model": "capitalStart"
+              },
+              {
+                "inputType": "money",
+                "maxLength": 3,
+                "model": "capitalEnd"
+              }
+            ]
+          }
+        
+      },
+      {
+        "fields": 
+          {
+            "type": "rangeInput",
+            "label": "純益率級距",
+            "analyzeSQLColumn": "營利事業純益率",
+            "model": "zapShRef",
+            "isCol_12":true,
+            "child": [
+              {
+                "inputType": "number",
+                "maxLength": 3,
+                "model": "zapShRefStart"
+              },
+              {
+                "inputType": "number",
+                "maxLength": 3,
+                "model": "zapShRefEnd"
+              }
+            ]
+          }
+        
+      },
+      {
+        "fields": 
+          {
+            "type": "checklistForOrgCd",
+            "label": "公開發行公司",
+            "model": "stkLstOtcMk"
+          }
+        
+      },
+      {
+        "fields":{
+          "type": "input",
+          "label": "小企業銷售予大企業比率大於等於(%)",
+          "model": "sSaleSaleRate",
+          "inputType": "number",
+          "analyzeSQLColumn": "小企業銷售予大企業比率",
+          "required": true
+        }
+      },
+      {
+        "fields":{
+          "type": "input",
+          "label": "銷售予大企業之小企業銷售門檻值(M1)等於(單位:萬元)",
+          "inputType": "money",
+          "model": "lPrsBusiCntM1",
+          "required": true
+        }
+      },
+      {
+        "fields": {
+          "type": "input",
+          "label": "小企業營業稅申報加值率大於(%)",
+          "inputType": "number",
+          "analyzeSQLColumn": "小企業營業稅申報加值率",
+          "model": "sAddRate",
+          "required": true
+        }
+      },
+      {
+        "fields":{
+          "type": "input",
+          "label": "小企業進項憑證不足差異額大於(單位:萬元)",
+          "analyzeSQLColumn": "小企業進項憑證不足差異額",
+          "inputType": "money",
+          "model": "sPrsVouchAmt",
+          "required": true
+        }
+        
+      },
+      {
+        "fields": {
+          "type": "input",
+          "label": "小企業進項憑證不足差異額佔比大於(%)",
+          "inputType": "number",
+          "analyzeSQLColumn": "小企業進項憑證不足差異額佔比",
+          "model": "sPrsVouchRate",
+          "required": true
+        }
+      },
+      {
+        "fields": {
+          "type": "radio",
+          "label": "組織別",
+          "model": "orgnTp",
+          "isCol_12":true,
+          "values": [
+            {
+              "value": "Y",
+              "label": "獨資或合夥"
+            },
+            {
+              "value": "N",
+              "label": "非獨資或合夥"
+            },
+            {
+              "value": "",
+              "label": "全部"
+            }
+          ]
+        }
+      },
+      {
+        "fields": 
+          {
+            "type": "radioBscd",
+            "label": "行業代號",
+            "child": [
+              {
+                "type": "checklistForOrgCd",
+                "name": "選取行業代號大類",
+                "model": "checklistParentBscd"
+              },
+              {
+                "type": "checklistForBscd",
+                "name": "選取行業代號",
+                "model": "checklistBscd"
+              },
+              {
+                "type": "rangeInputNew",
+                "name": "選取區間",
+                "model": "bscdTime",
+                "child": [
+                  {
+                    "inputType": "money",
+                    "model": "bscdTimeStart"
+                  },
+                  {
+                    "inputType": "money",
+                    "model": "bscdTimeEnd"
+                  }
+                ]
+              },
+              {
+                "type": "rangeInputNew",
+                "name": "排除區間",
+                "model": "excludeBscdTime",
+                "child": [
+                  {
+                    "inputType": "money",
+                    "model": "excludeBscdTimeStart"
+                  },
+                  {
+                    "inputType": "money",
+                    "model": "excludeBscdTimeEnd"
+                  }
+                ]
+              }
+            ]
+          }
+        
+      }
+    ]
+  }
+}

@@ -133,6 +133,15 @@ const format = (n) => {
     }
 }
 
+const inputOnlyNum = (newVal) => {
+    const oldVal = newVal.substr(0,newVal.length-1)
+    if(isNaN(Number(newVal))){
+        return oldVal
+    }else{
+        return newVal
+    }
+}
+
 //截取字符串並加...
 const subText = (str, length) => {
     if (str.length === 0) {
@@ -205,4 +214,5 @@ export default{
     outOfNum, //數字超過上限值會添加+
     format, //金額千分位
     trim,
+    inputOnlyNum
 }

@@ -31,7 +31,7 @@
         "id":2,
         "meta":{
             "directory": true,
-            "icon": "",
+            "icon": "tasks",
             "label": "JS套件使用"
         },
         "children": [
@@ -40,7 +40,7 @@
                 "path": "/myp201",
                 "meta": {
                   "functionId": "MYP201",
-                  "label": "套件",
+                  "label": "notification套件",
                   "icon": "tasks"
                 }
             }
@@ -50,7 +50,7 @@
         "id":7,
         "meta":{
             "directory": true,
-            "icon": "",
+            "icon": "tasks",
             "label": "vue元件觀念"
         },
         "children": [
@@ -88,7 +88,7 @@
                 "path": "/myp302",
                 "meta":{
                     "functionId": "MYP302",
-                    "icon": "",
+                    "icon": "tasks",
                     "label": "vue元件遞迴"
                 }
             },
@@ -97,7 +97,7 @@
                 "path": "/myp303",
                 "meta":{
                     "functionId": "MYP303",
-                    "icon": "",
+                    "icon": "tasks",
                     "label": "跨元件(兄弟層)傳遞"
                 }
             },
@@ -106,8 +106,17 @@
                 "path": "/myp304",
                 "meta":{
                     "functionId": "MYP304",
-                    "icon": "",
+                    "icon": "tasks",
                     "label": "操作DOM方式"
+                }
+            },
+            {
+                "id":15,
+                "path": "/myp305",
+                "meta":{
+                    "functionId": "MYP305",
+                    "icon": "tasks",
+                    "label": "自製directives指令"
                 }
             }
         ]
@@ -116,7 +125,7 @@
         "id":12,
         "meta":{
             "directory": true,
-            "icon": "",
+            "icon": "tasks",
             "label": "模組元件"
         },
         "children":[
@@ -125,7 +134,7 @@
                 "path": "/myp401",
                 "meta":{
                     "functionId": "MYP401",
-                    "icon": "",
+                    "icon": "tasks",
                     "label": "模組元件範例"
                 }
             }

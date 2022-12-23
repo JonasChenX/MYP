@@ -5,6 +5,7 @@ const myp301B = () => import('@/components/myp301/componts/b.vue')
 const myp302 = () => import('@/components/myp302/myp302.vue')
 const myp303 = () => import('@/components/myp303/myp303.vue')
 const myp304 = () => import('@/components/myp304/myp304.vue')
+const myp305 = () => import('@/components/myp305/myp305.vue')
 
 export default [
     {
@@ -56,6 +57,15 @@ export default [
       meta: {
         functionId: 'MYP304',
         label: '操作DOM方式',
+      },
+    },
+    {
+      name: 'myp305',
+      path: '/myp305',
+      component: myp305,
+      meta: {
+        functionId: 'MYP305',
+        label: '自製directives指令',
       },
     }
    

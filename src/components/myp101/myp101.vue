@@ -30,7 +30,6 @@ import bowserFunCom from '@/components/myp101/componts/bowserFunCom.vue'
 import otherFunCom from '@/components/myp101/componts/otherFunCom.vue'
 import storageFunCom from '@/components/myp101/componts/storageFunCom.vue'
 import enumFunCom from '@/components/myp101/componts/enumFunCom.vue'
-import regexFunCom from '@/components/myp101/componts/regexFunCom.vue'
 export default {
     components:{
         titleCard,
@@ -43,7 +42,6 @@ export default {
         otherFunCom,
         storageFunCom,
         enumFunCom,
-        regexFunCom
     },
     setup(){
 

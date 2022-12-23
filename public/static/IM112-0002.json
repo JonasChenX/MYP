@@ -1,0 +1,128 @@
+{
+  "model": {
+    "dataYr": "",
+    "orgCd": "",
+    "billBatchTp": "",
+    "medFeeDed": "",
+    "ttlSlfPayTot": "",
+    "baseLiveDifMk": "",
+    "nGeneDedMk": ""
+  },
+  "schema": {
+    "groups": [
+      {
+        "fields": 
+          {
+            "type": "checklistForOrgCd",
+            "label": "機關代號",
+            "model": "orgCd"
+          }
+        
+      },
+      {
+        "fields": 
+          {
+            "type": "input",
+            "label": "資料年度(YYY)",
+            "model": "dataYr",
+            "inputType": "year",
+            "maxLength": 3,
+            "required": true
+          }
+        
+      },
+      {
+        "fields": 
+          {
+            "type": "select",
+            "label": "批次別",
+            "model": "billBatchTp",
+            "values": [
+              {
+                "label": "1",
+                "value": "1"
+              },
+              {
+                "label": "2",
+                "value": "2"
+              },
+              {
+                "label": "3",
+                "value": "3"
+              },
+              {
+                "label": "4",
+                "value": "4"
+              },
+              {
+                "label": "全部",
+                "value": "all"
+              }
+            ]
+          }
+        
+      },
+      {
+        "fields": 
+          {
+            "type": "input",
+            "label": "全戶醫藥及生育費可扣除金額大於",
+            "model": "medFeeDed",
+            "analyzeSQLColumn": "全戶醫藥費",
+            "inputType": "money",
+            "required": true
+          }
+        
+      },
+      {
+        "fields": 
+          {
+            "type": "input",
+            "label": "同醫院同科別醫藥費總計合計大於",
+            "model": "ttlSlfPayTot",
+            "inputType": "money",
+            "required": true
+          }
+        
+      },
+      {
+        "fields": 
+          {
+            "type": "radioButton",
+            "label": "排除基本生活費差額 (DX)大於0",
+            "model": "baseLiveDifMk",
+            "values": [
+              {
+                "value": "Y",
+                "label": "是"
+              },
+              {
+                "value": "N",
+                "label": "否"
+              }
+            ]
+          }
+        
+      },
+      {
+        "fields": 
+          {
+            "type": "radioButton",
+            "label": "排除核定為列舉案件且所得淨額(AE)加計同醫院同科別醫藥費總計後金額小於等於0",
+            "model": "nGeneDedMk",
+            "values": [
+              {
+                "value": "Y",
+                "label": "是"
+              },
+              {
+                "value": "N",
+                "label": "否"
+              }
+            ]
+          }
+        
+      }
+    ]
+  }
+}

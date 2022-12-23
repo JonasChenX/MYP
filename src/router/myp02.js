@@ -8,7 +8,7 @@ export default [
       component: myp201,
       meta: {
         functionId: 'MYP201',
-        label: '套件',
+        label: 'notification套件',
       },
     },
    

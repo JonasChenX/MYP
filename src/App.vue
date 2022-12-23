@@ -2,16 +2,17 @@
   <navbar/>
   <breadcrumb/>
   <router-view/>
-  <notifications />
+  <notifications-group/>
 </template>
 <script>
 import navbar from '@/core/navbar/navbar.vue'
 import breadcrumb from '@/core/breadcrumb/breadcrumb.vue'
-
+import notificationsGroup from '@/components/myp201/componts/notificationsGroup.vue'
 export default {
   components:{
     navbar,
     breadcrumb,
+    notificationsGroup,
   }
   
 }

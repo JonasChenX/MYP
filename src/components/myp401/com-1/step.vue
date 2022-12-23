@@ -32,13 +32,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.ps-step-container {
+    .ps-step-container {
         display:flex;
         justify-content:space-between;
         position:relative;
         margin-bottom:30px;
         width:v-bind("styleWidth");
-        // width:10px;
         box-sizing:border-box;
         &:before,.ps-step-progress {
             height:5px;
@@ -53,12 +52,12 @@ export default {
         &:before {
             content:"";
             width:100%;
-            background-color: #2396ef;
+            background-color:#dededf;
         }
         .ps-step-progress {
             background-color:#2396ef;
             transition:all .4s cubic-bezier(.19,1,.22,.33);
             width:v-bind(styleProgressWidth);
         }
-}
+    }
 </style>

@@ -16,8 +16,7 @@ import otherFun from '@/common/functions/other'
 import storageFun from '@/common/functions/storageFunction'
 //創建枚舉方法
 import enumFun from '@/common/functions/createEnum'
-//正則表達式匹配方法
-import { regexFun } from '@/common/functions/regFunction'
+//
 
 
 export{
@@ -29,7 +28,6 @@ export{
     otherFun,
     storageFun,
     enumFun,
-    regexFun
 }
 
 export const funMainMenu = [
@@ -80,11 +78,5 @@ export const funMainMenu = [
             "label": "創建枚舉方法",
             "name": "enumFunCom",
         },
-    },
-    {
-        "meta":{
-            "label": "正則表達式匹配方法",
-            "name": "regexFunCom",
-        },
-    },
+    }
 ]

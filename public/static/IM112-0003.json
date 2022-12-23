@@ -1,0 +1,259 @@
+{
+  "model": {
+    "dataYr": "",
+    "orgCd": "",
+    "profBl": "",
+    "profCd": "",
+    "accountFeeField": "",
+    "flgRvnuRange": "",
+    "netPfRateRange": "",
+    "expItemNmAmtA": "",
+    "expItemNmAmtB": "",
+    "expItemNmAmtC": "",
+    "expItemNmAmtD": "",
+    "flgRvnuRangeStart": "",
+    "flgRvnuRangeEnd": "",
+    "netPfRateRangeStart": "",
+    "netPfRateRangeEnd": ""
+  },
+  "schema": {
+    "groups": [
+      {
+        "fields": 
+          {
+            "type": "checklistForOrgCd",
+            "label": "機關代號",
+            "model": "orgCd"
+          }
+        
+      },
+      {
+        "fields": 
+          {
+            "type": "input",
+            "label": "資料年度(YYY)",
+            "model": "dataYr",
+            "inputType": "year",
+            "maxLength": 3,
+            "required": true
+          }
+        
+      },
+      {
+        "fields": 
+          {
+            "type": "input",
+            "label": "業別歸屬",
+            "model": "profBl",
+            "inputType": "upperCase",
+            "analyzeSQLColumn": "當年度申報收入"
+          }
+        
+      },
+      {
+        "fields": 
+          {
+            "type": "input",
+            "label": "業別代號",
+            "model": "profCd"
+          }
+        
+      },
+      {
+        "fields": 
+          {
+            "type": "select",
+            "label": "請先指定\"特定費用欄位\"",
+            "model": "accountFeeField",
+            "analyzeSQLColumn": "純益率較上年減少比率",
+            "required": true,
+            "values": [
+              {
+                "text": "薪資支出",
+                "value": "exp_item_nm_amt01"
+              },
+              {
+                "text": "材料費",
+                "value": "exp_item_nm_amt02"
+              },
+              {
+                "text": "租金",
+                "value": "exp_item_nm_amt03"
+              },
+              {
+                "text": "旅費",
+                "value": "exp_item_nm_amt04"
+              },
+              {
+                "text": "伙食費",
+                "value": "exp_item_nm_amt05"
+              },
+              {
+                "text": "進修訓練費",
+                "value": "exp_item_nm_amt06"
+              },
+              {
+                "text": "郵電費",
+                "value": "exp_item_nm_amt07"
+              },
+              {
+                "text": "修繕費",
+                "value": "exp_item_nm_amt08"
+              },
+              {
+                "text": "廣告費",
+                "value": "exp_item_nm_amt09"
+              },
+              {
+                "text": "保險費",
+                "value": "exp_item_nm_amt10"
+              },
+              {
+                "text": "交際費",
+                "value": "exp_item_nm_amt11"
+              },
+              {
+                "text": "職工福利費",
+                "value": "exp_item_nm_amt12"
+              },
+              {
+                "text": "水電瓦斯費",
+                "value": "exp_item_nm_amt13"
+              },
+              {
+                "text": "稅捐",
+                "value": "exp_item_nm_amt14"
+              },
+              {
+                "text": "書報雜誌費",
+                "value": "exp_item_nm_amt15"
+              },
+              {
+                "text": "燃料費",
+                "value": "exp_item_nm_amt16"
+              },
+              {
+                "text": "折舊",
+                "value": "exp_item_nm_amt17"
+              },
+              {
+                "text": "損害賠償",
+                "value": "exp_item_nm_amt18"
+              },
+              {
+                "text": "複委託費",
+                "value": "exp_item_nm_amt19"
+              },
+              {
+                "text": "佣金支出",
+                "value": "exp_item_nm_amt20"
+              },
+              {
+                "text": "捐贈",
+                "value": "exp_item_nm_amt21"
+              },
+              {
+                "text": "文具用品及印刷",
+                "value": "exp_item_nm_amt22"
+              },
+              {
+                "text": "利息支出",
+                "value": "exp_item_nm_amt23"
+              },
+              {
+                "text": "退休金準備",
+                "value": "exp_item_nm_amt24"
+              },
+              {
+                "text": "退休基金",
+                "value": "exp_item_nm_amt25"
+              },
+              {
+                "text": "加班費",
+                "value": "exp_item_nm_amt26"
+              },
+              {
+                "text": "災害損失",
+                "value": "exp_item_nm_amt27"
+              },
+              {
+                "text": "退休金費用",
+                "value": "exp_item_nm_amt28"
+              },
+              {
+                "text": "其他費用或損失",
+                "value": "exp_item_nm_amt99"
+              }
+            ]
+          }
+        
+      },
+      {
+        "fields": 
+          {
+            "type": "rangeInputNew",
+            "label": "當年度收入總額介於",
+            "model": "flgRvnuRange",
+            "analyzeSQLColumn": "收入較上年度減少比例",
+            "child": [
+              {
+                "inputType": "money",
+                "model": "flgRvnuRangeStart"
+              },
+              {
+                "inputType": "money",
+                "model": "flgRvnuRangeEnd"
+              }
+            ]
+          }
+        
+      },
+      {
+        "fields": 
+          {
+            "type": "rangeInputNew",
+            "label": "當年度純益率介於(%)",
+            "model": "netPfRateRange",
+            "child": [
+              {
+                "inputType": "number",
+                "model": "netPfRateRangeStart"
+              },
+              {
+                "inputType": "number",
+                "model": "netPfRateRangeEnd"
+              }
+            ]
+          }
+        
+      },
+      {
+        "fields": 
+          {
+            "type": "inputRequiredField",
+            "model": "inputRequiredField",
+            "child": [
+              {
+                "inputType": "number",
+                "model": "expItemNmAmtA",
+                "label": "a.純益率較上年度減少達___%以上"
+              },
+              {
+                "model": "expItemNmAmtB",
+                "label": "b.收入較上年度減少達___%以上"
+              },
+              {
+                "model": "expItemNmAmtC",
+                "label": "c.特定費用占申報收入總額達___%以上"
+              },
+              {
+                "model": "expItemNmAmtD",
+                "label": "d.特定費用占上年度核定特定費用總額達___%以上"
+              }
+            ]
+          }
+        
+      }
+    ]
+  }
+}

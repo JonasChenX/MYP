@@ -22,6 +22,20 @@ const createReversedMap = (map) => {
     }, {})
 }
 
+//篩選物件中符合key的值
+const objFilterForKey = (mainObject, filterFunction) => {
+    return  Object.keys(mainObject)
+        .filter( (ObjectKey) => filterFunction( ObjectKey ))
+        .reduce( (result, ObjectKey)=> ( result[ObjectKey] = mainObject[ObjectKey], result ), {} );
+}
+
+//篩選物件中符合value的值
+const objFilterForVal = (mainObject, filterFunction) => {
+    return  Object.keys(mainObject)
+        .filter( (ObjectKey) => filterFunction( mainObject[ObjectKey] ))
+        .reduce( (result, ObjectKey)=> ( result[ObjectKey] = mainObject[ObjectKey], result ), {} );
+}
+
 
 
 
@@ -30,6 +44,8 @@ export default {
     
     getUuid, //產生UUID    
     createReversedMap, //將map相反過來
+    objFilterForKey,
+    objFilterForVal
     
 }
 

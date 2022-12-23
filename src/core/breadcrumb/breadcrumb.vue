@@ -5,10 +5,14 @@
                 v-for="(breadcrumb, index) in breadcrumbs"
                 :key="index">
                 <router-link v-if="breadcrumb.path" :to="breadcrumb.path" class="text-dark">
-                    {{ breadcrumb.label }}
+                    <font-awesome-icon v-if="breadcrumb.icon" :icon='breadcrumb.icon' class="me-1" />
+                    <span>{{ breadcrumb.label }}</span>  
                     <code v-if="breadcrumb.functionId" >({{ breadcrumb.functionId }})</code>
                 </router-link>
-                <span v-else>{{ breadcrumb.label }}</span>
+                <span v-else>
+                    <font-awesome-icon v-if="breadcrumb.icon" :icon='breadcrumb.icon' class="me-1" />
+                    <span>{{ breadcrumb.label }}</span>
+                </span>
             </li>
         </ol>
     </nav>

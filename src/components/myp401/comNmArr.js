@@ -7,5 +7,12 @@ export const comNmArr = [
             "name": "progressStepsMain",
         },
     },
+    {
+        "id":2,
+        "meta":{
+            "label": "report表單",
+            "name": "sameGroup",
+        },
+    },
     
 ]
