@@ -20,6 +20,7 @@ import sidebar from '@/core/sidebar/sidebar.vue'
 import progressStepsMain from '@/components/myp401/com-1/progressStepsMain.vue'
 import sameGroup from '@/components/myp401/com-2/sameGroup.vue'
 import showStars from '@/components/myp401/com-3/showStars.vue'
+import searchAndChcked from '@/components/myp401/com-4/searchAndChcked.vue'
 
 import { ref } from '@vue/reactivity'
 export default {
@@ -27,7 +28,8 @@ export default {
         sidebar,
         progressStepsMain,
         sameGroup,
-        showStars
+        showStars,
+        searchAndChcked
     },
     setup(){
 

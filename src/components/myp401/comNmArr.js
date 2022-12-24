@@ -21,5 +21,12 @@ export const comNmArr = [
             "name": "showStars",
         },
     },
+    {
+        "id":4,
+        "meta":{
+            "label": "查詢加勾選",
+            "name": "searchAndChcked",
+        },
+    },
     
 ]
