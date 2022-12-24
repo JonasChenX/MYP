@@ -28,5 +28,12 @@ export const comNmArr = [
             "name": "searchAndChcked",
         },
     },
+    {
+        "id":5,
+        "meta":{
+            "label": "搜尋下拉選單",
+            "name": "selector",
+        },
+    },
     
 ]
