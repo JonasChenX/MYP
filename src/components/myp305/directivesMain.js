@@ -7,17 +7,17 @@ import input from '@/components/myp305/directivesFuns/v-input'
 
 // 自定义指令
 const directives = {
-    copy,
-    longpress,
-    debounce,
-    drag,
-    input,
-  }
+  copy,
+  longpress,
+  debounce,
+  drag,
+  input,
+}
    
-  export default {
-    install(Vue) {
-      Object.keys(directives).forEach((key) => {
-        Vue.directive(key, directives[key])
-      })
-    },
-  }
+export default {
+  install(Vue) {
+    Object.keys(directives).forEach((key) => {
+      Vue.directive(key, directives[key])
+    })
+  },
+}

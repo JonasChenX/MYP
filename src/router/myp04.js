@@ -9,6 +9,7 @@ export default [
       meta: {
         functionId: 'MYP401',
         label: '模組元件範例',
+        requiresAuth: true
       },
     },
    

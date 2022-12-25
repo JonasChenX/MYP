@@ -28,7 +28,7 @@ const longpress = (el, binding, vNode) => {
     }
     // 添加事件监听器
     el.addEventListener('mousedown', start)
-    el.addEventListener('touchstart', start)
+    // el.addEventListener('touchstart', start)
     // 取消计时器
     el.addEventListener('click', cancel)
     el.addEventListener('mouseout', cancel)

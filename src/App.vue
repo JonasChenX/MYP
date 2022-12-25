@@ -13,6 +13,11 @@ export default {
     navbar,
     breadcrumb,
     notificationsGroup,
+  },
+  setup(){
+
+    return{
+    }
   }
   
 }

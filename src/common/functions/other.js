@@ -36,6 +36,15 @@ const objFilterForVal = (mainObject, filterFunction) => {
         .reduce( (result, ObjectKey)=> ( result[ObjectKey] = mainObject[ObjectKey], result ), {} );
 }
 
+//防抖函式
+const debounce = (func, timeout = 500) => {
+    let timer;
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => { func.apply(this, args); }, timeout);
+    };
+}
+
 
 
 
@@ -45,7 +54,8 @@ export default {
     getUuid, //產生UUID    
     createReversedMap, //將map相反過來
     objFilterForKey,
-    objFilterForVal
+    objFilterForVal,
+    debounce, //防抖函式
     
 }
 

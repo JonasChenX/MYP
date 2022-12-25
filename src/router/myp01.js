@@ -10,6 +10,7 @@ export default [
       meta: {
         functionId: 'MYP101',
         label: '常用函數工具',
+        requiresAuth: true
       },
     },
     {
@@ -19,6 +20,7 @@ export default [
         meta: {
           functionId: 'MYP102',
           label: '陣列and物件使用技巧',
+          requiresAuth: true
         },
     },
 ]

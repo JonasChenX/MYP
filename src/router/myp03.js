@@ -15,6 +15,7 @@ export default [
       meta: {
         functionId: 'MYP301',
         label: '頁面切換',
+        requiresAuth: true
       },
       children:[
         {
@@ -22,13 +23,17 @@ export default [
           name:'myp301A',
           component: myp301A,
           meta: {
-            keepAlive: true
+            keepAlive: true,
+            requiresAuth: true
           }
         },
         {
           path:'b',
           name:'myp301B',
           component: myp301B,
+          meta:{
+            requiresAuth: true
+          }
         },
       ]
     },
@@ -39,6 +44,7 @@ export default [
       meta: {
         functionId: 'MYP302',
         label: 'vue元件遞迴',
+        requiresAuth: true
       },
     },
     {
@@ -48,6 +54,7 @@ export default [
       meta: {
         functionId: 'MYP303',
         label: '跨元件(兄弟層)傳遞',
+        requiresAuth: true
       },
     },
     {
@@ -57,6 +64,7 @@ export default [
       meta: {
         functionId: 'MYP304',
         label: '操作DOM方式',
+        requiresAuth: true
       },
     },
     {
@@ -66,6 +74,7 @@ export default [
       meta: {
         functionId: 'MYP305',
         label: '自製directives指令',
+        requiresAuth: true
       },
     }
    

@@ -2,7 +2,7 @@
     <div>myp305</div>
     <div class="flex">
         <div class="btn btn-info me-2" v-copy="copyText">v-copy 複製</div>
-        <div class="btn btn-info me-2" v-longpress="longpress">v-debounce 長壓按鈕</div>
+        <div class="btn btn-info me-2" v-longpress="longpress">v-longpress 長壓按鈕</div>
         <div class="btn btn-info me-2" v-debounce="debounceClick">v-debounce 防抖函式</div>
         <div class="btn btn-info me-2" v-drag >v-drag 拖曳</div>
     </div>

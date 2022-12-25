@@ -9,6 +9,7 @@ export default [
       meta: {
         functionId: 'MYP201',
         label: 'notification套件',
+        requiresAuth: true
       },
     },
    

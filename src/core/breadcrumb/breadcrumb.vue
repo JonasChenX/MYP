@@ -21,7 +21,7 @@
 <script>
 import { retrieve } from '@/core/menu/menu-service'
 import router from '@/router';
-import { reactive, watch } from '@vue/runtime-core';
+import { onMounted, reactive, watch } from '@vue/runtime-core';
 export default {
     setup(){
     
@@ -29,7 +29,15 @@ export default {
 
         const expandedMenus = [...retrieve()];
 
+        onMounted(()=>{
+            creatBreadcrumb(router.currentRoute.value)
+        })
+
         watch(router.currentRoute, to => {
+            creatBreadcrumb(to)
+        });
+
+        const creatBreadcrumb = (to) => {
             const id = expandedMenus.find(expandedMenu => expandedMenu.path === to.path)?.id;
             while (breadcrumbs.length > 0) {
                 breadcrumbs.pop();
@@ -45,8 +53,7 @@ export default {
                 addBreadcrumb(id, breadcrumbs);
                 breadcrumbs[breadcrumbs.length - 1].class = 'active';
             }
-        });
-
+        }
 
         const addBreadcrumb = (id, breadcrumbsRef) => {
             const breadcrumb = expandedMenus.find(expandedMenu => expandedMenu.id === id);
