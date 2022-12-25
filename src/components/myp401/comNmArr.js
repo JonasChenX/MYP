@@ -35,5 +35,12 @@ export const comNmArr = [
             "name": "selector",
         },
     },
+    {
+        "id":6,
+        "meta":{
+            "label": "分頁",
+            "name": "pagination",
+        },
+    },
     
 ]

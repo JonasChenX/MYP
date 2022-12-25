@@ -22,6 +22,7 @@ import sameGroup from '@/components/myp401/com-2/sameGroup.vue'
 import showStars from '@/components/myp401/com-3/showStars.vue'
 import searchAndChcked from '@/components/myp401/com-4/searchAndChcked.vue'
 import selector from '@/components/myp401/com-5/demoSelector.vue'
+import pagination from '@/components/myp401/com-6/demoPagination.vue'
 
 import { ref } from '@vue/reactivity'
 export default {
@@ -31,7 +32,8 @@ export default {
         sameGroup,
         showStars,
         searchAndChcked,
-        selector
+        selector,
+        pagination
     },
     setup(){
 
