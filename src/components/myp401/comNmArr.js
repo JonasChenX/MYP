@@ -42,5 +42,13 @@ export const comNmArr = [
             "name": "pagination",
         },
     },
+    {
+        "id":7,
+        "meta":{
+            "label": "捲軸瀏覽加載",
+            "name": "infiniteScroll",
+        },
+    },
+
     
 ]
