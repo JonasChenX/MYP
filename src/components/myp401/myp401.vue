@@ -1,5 +1,5 @@
 <template>
-  <div class="row p-0 m-0">
+  <div class="row p-0 m-0 vh-100">
         <div class="col-2 p-0">
             <sidebar :sidebarMenuArr="comNmArr" @callMenuName="getMenuName" />
         </div>
