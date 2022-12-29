@@ -49,6 +49,13 @@ export const comNmArr = [
             "name": "infiniteScroll",
         },
     },
+    {
+        "id":8,
+        "meta":{
+            "label": "滑動驗證",
+            "name": "slide",
+        },
+    },
 
     
 ]
