@@ -5,8 +5,8 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <template  v-if="$route.name !== 'login'">
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <template  v-if="$route.name !== 'login'">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown" v-for="(menu) in menus" :key="menu.id">
                             <a class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -21,10 +21,10 @@
                             </ul>
                         </li>
                     </ul>
+                </template>
+                <div class="text-end ms-auto">
+                    <div v-if="$route.name !== 'login'" class="btn btn-primary" @click="logout()">登出</div>
                 </div>
-            </template>
-            <div>
-                <div v-if="$route.name !== 'login'" class="btn btn-primary" @click="logout()">登出</div>
             </div>
         </div>
     </nav>
