@@ -3,7 +3,7 @@ const showInfo = (req,res) => {
 
     //後端回報顯示
     const date = formatDate(new Date(req._startTime));
-    const api = req.url
+    const api = req.originalUrl
     const method = req.method
     const statusCode = res.statusCode
     const body = JSON.stringify(req.body)
@@ -24,7 +24,16 @@ const formatDate = (current_datetime)=>{
     return formatted_date;
 }
 
+const getToPost = (req) => {
+
+    req.method = 'GET';
+    req.query = req.body;
+
+    return req
+}
+
 module.exports = {
     showInfo,
-    formatDate
+    formatDate,
+    getToPost
 }

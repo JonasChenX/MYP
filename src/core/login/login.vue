@@ -5,7 +5,7 @@
         <div class="mb-3 row mt-3">
           <label for="staticEmail" class="col-sm-2 col-form-label">UserId</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="staticEmail" v-model="loginInfo.id">
+            <input type="text" class="form-control" id="staticEmail" v-model="loginInfo.userId">
           </div>
         </div>
         <div class="mb-3 row">
@@ -34,15 +34,15 @@ export default {
     setup(){
 
         const loginInfo = reactive({
-            id:'user',
+            userId:'user',
             pwd:'1234'
         })
 
         const showError = ref(false)
 
-        const login = otherFun.debounce(() => {
-
-            const result = loginServer(loginInfo)
+        const login = otherFun.debounce( async () => {
+            //回傳 登入結果
+            const result = await loginServer(loginInfo) 
             if(result){
                 //顯示登入成功訊息
                 useNotificationObj.success('登入成功')

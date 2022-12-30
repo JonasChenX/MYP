@@ -52,16 +52,15 @@ server.use((req, res, next) => {
             req['body'] = _addFieldServer(req['body'])    
         }
         //請求資料攔截器
-        _reqInterceptorServer(req)
-
+        _reqInterceptorServer(req,res)
         next()
     }catch(err){
 
+        console.log(err);
+
         //回傳錯誤訊息
-        res.jsonp({
-            err: err.message,
-            code: _codeStatus.EXRCUTION_ERROR
-        })
+        res.writeHead(_codeStatus.EXRCUTION_ERROR.code, err.message, {'content-type' : 'text/plain'})
+        res.end(_codeStatus.EXRCUTION_ERROR.msgE);
     }
 })
 
