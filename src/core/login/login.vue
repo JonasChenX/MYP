@@ -42,13 +42,13 @@ export default {
 
         const login = otherFun.debounce( async () => {
             //回傳 登入結果
-            const result = await loginServer(loginInfo) 
-            if(result){
+            const {isVerify, token} = await loginServer(loginInfo) 
+            if(isVerify){
                 //顯示登入成功訊息
                 useNotificationObj.success('登入成功')
                 //登入成功後 token 存放 sessionStorage
                 //token 應只在當前網站打開期間生效
-                storageFun.sessionStorageObj.set("mypToken",'test')
+                storageFun.sessionStorageObj.set("mypToken",token)
                 //跳轉到首頁
                 router.push('/home')
             }else{

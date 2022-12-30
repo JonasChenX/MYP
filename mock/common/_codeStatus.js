@@ -24,4 +24,9 @@ module.exports = {
         msgC: '登入成功',
         msgE: 'LOGIN_SUCCEED',
     },
+    AUTH_VALID_ERROR: {
+        code: 910,
+        msgC: '驗證失敗',
+        msgE: 'AUTH_VALID_ERROR',
+    }
 }

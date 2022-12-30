@@ -2,7 +2,7 @@ module.exports = [
     {
         id: 1,
         userId: 'user',
-        pwd: '1111'
+        pwd: '2jqes6NyrPNTV/6s61AQ+PM421P2v79tTipqK4xFAJmIWlnLW+uhyyfadNv2cXFH' //1111
     },
     {
         id: 2,

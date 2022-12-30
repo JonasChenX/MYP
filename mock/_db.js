@@ -45,15 +45,33 @@ const middlewares = jsonServer.defaults()
 server.use(middlewares)
 server.use(jsonServer.bodyParser)
 server.use((req, res, next) => {
-
     try{
-        if (req.method === 'POST') {
-            //創建共用欄位
-            req['body'] = _addFieldServer(req['body'])    
+
+        const loginServer = require('./reqServer/_loginServer')
+        if(req.method ==='POST' && req.url ==='/login-user'){
+            loginServer.reqLogin(req,res)
+            next();
+            return
         }
-        //請求資料攔截器
-        _reqInterceptorServer(req,res)
-        next()
+
+        const token = req.headers['authorization']
+        const jwtConfig = require("../jwt/config");
+        const jwt = require('jsonwebtoken');
+        jwt.verify(token, jwtConfig['JWT_SIGN_SECRET'], (err, decoded) => {
+            if (err) {
+                res.writeHead(_codeStatus.AUTH_VALID_ERROR.code, _codeStatus.AUTH_VALID_ERROR.msgE, {'content-type' : 'text/plain'})
+                res.end(_codeStatus.AUTH_VALID_ERROR.msgE);
+            } else {
+                if (req.method === 'POST') {
+                    //創建共用欄位
+                    req['body'] = _addFieldServer(req['body'])    
+                }
+                //請求資料攔截器
+                _reqInterceptorServer(req,res)
+                next();
+            }
+        });
+        
     }catch(err){
 
         console.log(err);

@@ -15,15 +15,30 @@ const resResultServer = (res) => {
     const sCodeStr = res.statusCode+''
     console.log(`====>狀態碼: ${sCodeStr.split('')[0]}XX <====`)
 
-    if(res.locals.data.length && res.req.originalUrl === '/login-user'){
-        /* 待JWT處理 */ 
+    if(res.req.originalUrl === '/login-user'){
+
+        let token = '';
+
+        if(res.locals.data.length > 0){
+            const jwtObj = {
+                userId: res.locals.data[0].userId
+            }
+    
+            //JWT產生token 
+            const jwtConfig = require("../../jwt/config");
+            const jwt = require('jsonwebtoken');
+            token = jwt.sign(jwtObj, jwtConfig['JWT_SIGN_SECRET'], {
+                expiresIn: 60*60*24
+            })
+
+        }
 
         //若有查到資料 代表帳密正確
         const result = res.locals.data.length > 0 ? true : false
-
         res.send({
             code: result ? _codeStatus.LOGIN_SUCCEED.code : _codeStatus.NOT_LOGIN.code,
-            msg: result ? _codeStatus.LOGIN_SUCCEED.msgC : _codeStatus.NOT_LOGIN.code,
+            msg: result ? _codeStatus.LOGIN_SUCCEED.msgC : _codeStatus.NOT_LOGIN.msgC,
+            mypJwt: result ?  token : null
         })
         return
     }

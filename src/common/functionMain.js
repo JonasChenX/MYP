@@ -16,7 +16,9 @@ import otherFun from '@/common/functions/other'
 import storageFun from '@/common/functions/storageFunction'
 //創建枚舉方法
 import enumFun from '@/common/functions/createEnum'
-//
+
+//AES加密解密
+import aesFun from '@/common/functions/aes'
 
 
 export{
@@ -28,6 +30,7 @@ export{
     otherFun,
     storageFun,
     enumFun,
+    aesFun
 }
 
 export const funMainMenu = [
