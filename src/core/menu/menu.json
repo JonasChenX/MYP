@@ -137,6 +137,15 @@
                     "icon": "tasks",
                     "label": "模組元件範例"
                 }
+            },
+            {
+                "id":16,
+                "path": "/myp402",
+                "meta":{
+                    "functionId": "MYP402",
+                    "icon": "tasks",
+                    "label": "CSS特效範例"
+                }
             }
         ]
     }
