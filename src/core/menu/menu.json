@@ -43,6 +43,15 @@
                   "label": "notification套件",
                   "icon": "tasks"
                 }
+            },
+            {
+                "id": 17,
+                "path": "/myp202",
+                "meta": {
+                  "functionId": "MYP202",
+                  "label": "導出Excel",
+                  "icon": "tasks"
+                }
             }
         ]
     },
