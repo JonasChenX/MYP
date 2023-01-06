@@ -23,5 +23,19 @@ module.exports = defineConfig({
           }
 
     }
-}
+  },
+  configureWebpack: {
+    module: {
+      rules: [
+        // 配置讀取 *.md文件的規則
+        {
+          test: /\.md$/,
+          use: [
+            { loader: "html-loader" },
+            { loader: "markdown-loader", options: {} }
+          ]
+        }
+      ]
+    }
+  },
 })

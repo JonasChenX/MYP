@@ -19,7 +19,7 @@ export default [
         component: myp102,
         meta: {
           functionId: 'MYP102',
-          label: '陣列and物件使用技巧',
+          label: '技術文章',
           requiresAuth: true
         },
     },
