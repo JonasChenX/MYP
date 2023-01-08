@@ -15,7 +15,7 @@
         </thead>
         <tbody>
             <tr v-for="(row,idx) in showRows" :key="idx">
-                <th scope="row">{{idx}}</th>
+                <th scope="row">{{idx + 1}}</th>
                 <td v-for="item in row" :key="item">{{item}}</td>
             </tr>
         </tbody>
