@@ -17,12 +17,14 @@
 import { comNmArr } from '@/components/myp402/comNmArr'
 import sidebar from '@/core/sidebar/sidebar.vue'
 import scrollAnimation from '@/components/myp402/com-1/scrollAnimation'
+import clockAnimation from '@/components/myp402/com-2/clockAnimation'
 
 import { ref } from '@vue/reactivity'
 export default {
     components:{
         sidebar,
-        scrollAnimation
+        scrollAnimation,
+        clockAnimation
     },
     setup(){
 
