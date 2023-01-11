@@ -7,4 +7,11 @@ export const comNmArr = [
             "name": "scrollAnimation",
         },
     },
+    {
+        "id":2,
+        "meta":{
+            "label": "時間顯示",
+            "name": "clockAnimation",
+        },
+    },
 ]

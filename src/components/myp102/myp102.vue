@@ -8,8 +8,8 @@
         <div class="col-2 p-0">
             <sidebar :sidebarMenuArr="blogMenu" @callMenuName="getMenuName"/>
         </div>
-        <div class="col-10 p-3">
-            <div class="text-start markdown-body" v-html="showMd" ></div>
+        <div class="col-10 p-0">
+            <div class="text-start markdown-body p-4" v-html="showMd" ></div>
         </div>
     </div>
 </template>
