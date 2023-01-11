@@ -56,6 +56,13 @@ export const comNmArr = [
             "name": "slide",
         },
     },
+    {
+        "id":9,
+        "meta":{
+            "label": "圖片上傳預覽",
+            "name": "imageUpdate",
+        },
+    },
 
     
 ]

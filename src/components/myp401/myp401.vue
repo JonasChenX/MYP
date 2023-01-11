@@ -25,6 +25,7 @@ import selector from '@/components/myp401/com-5/demoSelector.vue'
 import pagination from '@/components/myp401/com-6/demoPagination.vue'
 import infiniteScroll from '@/components/myp401/com-7/demoInfiniteScroll.vue'
 import slide from '@/components/myp401/com-8/demoSlide.vue'
+import imageUpdate from '@/components/myp401/com-9/demoImageUpdate.vue'
 
 import { ref } from '@vue/reactivity'
 export default {
@@ -37,7 +38,8 @@ export default {
         selector,
         pagination,
         infiniteScroll,
-        slide
+        slide,
+        imageUpdate
     },
     setup(){
 
