@@ -22,7 +22,8 @@
                         </li>
                     </ul>
                 </template>
-                <div class="text-end ms-auto">
+                <div class="text-end ms-auto d-flex">
+                    <div class="align-self-center me-3">版本:{{version}}</div>
                     <div v-if="$route.name !== 'login'" class="btn btn-primary" @click="logout()">登出</div>
                 </div>
             </div>
@@ -34,6 +35,7 @@
 import { getMenu } from '@/core/menu/menu-service'
 import { storageFun } from '@/common/functionMain'
 import router from '@/router';
+import { ref } from '@vue/reactivity';
 export default {
     name: 'Navbar',
     setup(){
@@ -51,11 +53,15 @@ export default {
             storageFun.sessionStorageObj.remove('mypToken')
             router.push('/login')
         }
+
+        //版本號說明 https://blog.csdn.net/qq_33816425/article/details/117415371
+        const version = ref(process.env.PACKAGE_VERSION)
     
         return{
             menus,
             pathHandler,
             logout,
+            version
         }
     }
 }
