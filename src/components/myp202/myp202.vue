@@ -5,28 +5,29 @@
         https://zhuanlan.zhihu.com/p/257845606
         https://juejin.cn/post/6991755278911963173
      -->
-    <div class="col-8 m-auto">
+    <div class="col-8 m-auto scroll">
         <table class="table">
         <thead>
             <tr>
-                <th scope="col"></th>
                 <th scope="col" v-for="item in showHead" :key="item">{{item}}</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="(row,idx) in showRows" :key="idx">
-                <th scope="row">{{idx + 1}}</th>
                 <td v-for="item in row" :key="item">{{item}}</td>
             </tr>
         </tbody>
         </table>
     </div>
+    <input type="file" @change="onChange" />
     <div class="btn btn-info" @click="ExportXlsx()">點擊匯出</div>
 
 </template>
 
 <script>
+import { ref } from '@vue/reactivity'
 import * as XLSX from 'xlsx'
+import { readFile } from '@/components/myp202/readFIle'
 export default {
     setup(){
 
@@ -34,21 +35,21 @@ export default {
         const tabelData = [
             {
                 date:'2016-06-30',
+                nameZn:'湯姆',
                 name:'Tom1111111111111111',
                 address:'Taiwan',
-                nameZn:'湯姆'
             },
              {
-                date:'2022-01-28',
+                nameZn:'強納森',
+                // date:'2022-01-28',
                 name:'Joson',
                 address:'Japan',
-                nameZn:'強納森'
             },
             {
                 date:'2022-01-30',
-                name:'Cindy',
+                // name:'Cindy',
                 address:'KK',
-                // nameZn:'熙娣'
+                nameZn:'熙娣'
             }
         ]
 
@@ -59,6 +60,7 @@ export default {
             address: '地址',
             nameZn: '中文名字'
         }
+
         //轉化中文後的陣列[匯出資料]
         const tabelDataToZN = tabelData.map(item => {
             const obj = {}
@@ -70,6 +72,7 @@ export default {
             return obj
         })
 
+        //匯出資料
         const ExportXlsx = () => {
             // 創建工作表
             const data = XLSX.utils.json_to_sheet(tabelDataToZN)
@@ -106,14 +109,68 @@ export default {
             XLSX.writeFile(wb, 'test.xlsx')
         }
 
-        const showHead = [...Object.values(head)]
-        const showRows = tabelDataToZN.map( item => [...Object.values(item)] )
+        //比對標頭與欄位
+        const toRows = (rowsData, headData) => {
+            const result = []
+            rowsData.forEach( (row,i) => {
+                const resultRow = []
+                for (const key in row) {
+                    headData.forEach((item,ind) => {
+                        if(item === key){
+                            return resultRow[ind] = row[key]
+                        } 
+                    })
+                }
+                return result[i] = resultRow
+            })
+            return result
+        }
+
+        //顯示標頭
+        let showHead = ref([...Object.values(head)])
+        //顯示Row
+        let showRows = ref([...toRows(tabelDataToZN, showHead.value)]) 
+
+        //讀取匯入資料
+        const onChange = async(e) => {
+
+            const file = e.target.files[0]
+            const dataBinary = await readFile(file)
+           
+            const workbook = XLSX.read(dataBinary, { 
+                type: 'binary', 
+                cellDates: true  //設為true 將天數時間戳改成時間格式 
+            })
+            const wsname = workbook.SheetNames[0]
+            const outData = XLSX.utils.sheet_to_json(workbook.Sheets[wsname])
+            
+            init(outData)
+        }
+
+        //初始化顯示資料
+        const init = (excelData) => {
+
+            //扁平化並去重
+            const headData = Array.from(new Set(excelData.map(item => {
+                return [...Object.keys(item)]
+            }).reduce((prev, curr) => prev.concat(curr))))
+
+            showHead.value = headData
+            showRows.value = [...toRows(excelData, headData)]
+        }
 
         return{
             ExportXlsx,
             showHead,
-            showRows
+            showRows,
+            onChange
         }
     }
 }
 </script>
+
+<style scoped>
+.scroll{
+    overflow-x: overlay;
+}
+</style>
