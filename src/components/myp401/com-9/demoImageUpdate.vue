@@ -5,16 +5,17 @@
     -->
     <div class="col-8 m-auto mt-5">
         <div class="border border-2 row" style="min-height: 200px;">
-            <div
-            v-if="Object.values(previewMap).length !== 0"
-            class="overflow-hidden col-3 p-0"
-            v-for="item in previewMap"
-            :key="item"
-            >
-                <div class="bg-black m-2 d-flex">
-                    <img class="img-fluid align-self-center"  :src="item" alt="" />
+            <template v-if="Object.values(previewMap).length !== 0">
+                <div
+                class="overflow-hidden col-3 p-0"
+                v-for="item in previewMap"
+                :key="item"
+                >
+                    <div class="bg-black m-2 d-flex">
+                        <img class="img-fluid align-self-center"  :src="item" alt="" />
+                    </div>
                 </div>
-            </div>
+            </template>
             <div v-else class="align-self-center"> 
                 <button class="btn btn-outline-primary" @click="uploadImages">上傳照片</button>
             </div>
