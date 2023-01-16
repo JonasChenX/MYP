@@ -32,14 +32,25 @@
                 <!-- type:input -->
                 <template v-if="val.type === 'input'">
                     <div class="col p-0" >
-                        <input :id="'input_'+index" type="text" class="form-control" :required="val.required" v-model="val.initialData" @input="textInputEvent($event.target.value, val, 'input_'+index)">
+                        <input 
+                        :id="'input_'+index" 
+                        type="text" 
+                        class="form-control" 
+                        :class="vaildClass(val.initialData, val)" 
+                        :required="val.required" v-model="val.initialData" 
+                        @input="textInputEvent($event.target.value, val, 'input_'+index)">
                     </div>
                 </template>
 
                 <!-- type:rangeInput -->
                 <template v-if="val.type === 'rangeInput'">
                      <div class="p-0 col input-group" v-for="(type, y) in val.child" :key="'rangeInput'+y">
-                        <input :id="'rangeInput_'+index + y" type="text rounded" :required="type.required" class="form-control" v-model="type.initialData" @input="textInputEvent($event.target.value, type, 'rangeInput_'+index + y)">
+                        <input :id="'rangeInput_'+index + y" 
+                        type="text rounded" 
+                        class="form-control"
+                        :class="vaildClass(val.initialData, val)"
+                        v-model="type.initialData" 
+                        @input="textInputEvent($event.target.value, type, 'rangeInput_'+index + y)">
                         <div class="my-auto mx-2" v-if="y !== val.child.length-1 ">{{ '~' }}</div>
                      </div>
                 </template>
@@ -55,7 +66,7 @@
 
                 <!-- 錯誤訊息 -->
                 <div class="text-danger mt-2 mr-2 d-flex flex-row-reverse">
-                    {{val.errorStr}}
+                    {{val.errorStr = vaildService(1, val.initialData, val)}}
                 </div>
 
             </div>
@@ -67,6 +78,7 @@
 import { onMounted, reactive, ref, nextTick } from '@vue/runtime-core';
 import axios from 'axios';
 import {otherFun, strFun} from '@/common/functionMain'
+import { vaildService } from '@/components/myp401/com-2/validService'
 export default {
     props:{
         propId:String
@@ -78,70 +90,69 @@ export default {
         let schema = null
         onMounted(()=>{{
             let formId = props.propId
-            let url = `static/${formId}.json`;
+            let url = `static/reportForm/${formId}.json`;
             axios.get(url).then((res) => {
 
-                schema = Object.assign({},res.data.schema)
+                schema = Object.assign({}, res.data.schema)
                 
                 //初始化
-                allAttributes.value = init(res.data.schema.groups,res.data.model)
+                allAttributes.value = init(res.data.schema.groups, res.data.model)
 
             }).catch(error => {
                 console.log(error);
             })
-      
         }})
 
         //初始化的方法
         const allAttributes = ref();
-        const init = (groups,model) => {
+        const init = (groups, model) => {
             const result = reactive([])
 
             groups.forEach((item)=>{
                    
-                    if(item['fields']['child']){
-                        item['fields']['child'].forEach((itemChild)=>{
+                if(item['fields']['child']){
+                    item['fields']['child'].forEach((itemChild)=>{
 
-                            let childInitialData = ref();
-                            childInitialData.value =  model[itemChild.model]
+                        let childInitialData = ref();
+                        childInitialData.value =  model[itemChild.model]
 
-                            //初始化
-                            itemChild.initialData = childInitialData.value;
-                            itemChild.apiData = reactive([]);
-                            itemChild.destination = reactive([]);
+                        //初始化
+                        itemChild.initialData = childInitialData.value;
+                        itemChild.apiData = reactive([]);
+                        itemChild.destination = reactive([]);
 
-                            if(itemChild['child']){
-                                itemChild['child'].forEach((itemChildChild)=>{
-                                    let childChildInitialData = ref()
-                                    childChildInitialData.value =  model[itemChildChild.model]
-                                    //初始化
-                                    itemChildChild.initialData = childChildInitialData.value;
-                                })
-                            }
+                        if(itemChild['child']){
+                            itemChild['child'].forEach((itemChildChild)=>{
+                                let childChildInitialData = ref()
+                                childChildInitialData.value =  model[itemChildChild.model]
+                                //初始化
+                                itemChildChild.initialData = childChildInitialData.value;
+                            })
+                        }
 
-                        })
-                    }
+                    })
+                }
                     
-                    //初始化 Json的fields
-                    let obj = reactive({
-                        child: item.fields.child, //定義 一格放置多欄位
-                        type: item.fields.type, //定義 欄位的類型
-                        isCol_12: item.fields.isCol_12,
-                        inputType: item.fields.inputType, //定義 input種類 限制輸入的格式
-                        fontColor: item.fields.fontColor, //定義 label顏色
-                        maxLength:item.fields.maxLength, //定義 最高字符長度
-                        label: item.fields.label, //定義 標題
-                        model: item.fields.model, //定義 model名稱(傳至後端的key)
-                        values: item.fields.values, //定義 多個值(select...)
-                        required: item.fields.required, //定義 是否必填
-                        apiData: [], //存放api資料
-                        destination: [], //顯示已選擇的資料
-                        initialData: model[item.fields.model], //綁定資料用[JSON設定檔的值]
-                        errorStr: '',
-                        childSelected: [],
-                    });
-                    result.push(obj);
-                })
+                //初始化 Json的fields
+                let obj = reactive({
+                    child: item.fields.child, //定義 一格放置多欄位
+                    type: item.fields.type, //定義 欄位的類型
+                    isCol_12: item.fields.isCol_12,
+                    inputType: item.fields.inputType, //定義 input種類 限制輸入的格式
+                    fontColor: item.fields.fontColor, //定義 label顏色
+                    maxLength:item.fields.maxLength, //定義 最高字符長度
+                    label: item.fields.label, //定義 標題
+                    model: item.fields.model, //定義 model名稱(傳至後端的key)
+                    values: item.fields.values, //定義 多個值(select...)
+                    required: item.fields.required, //定義 是否必填
+                    apiData: [], //存放api資料
+                    destination: [], //顯示已選擇的資料
+                    initialData: model[item.fields.model], //綁定資料用[JSON設定檔的值]
+                    errorStr: '',
+                    childSelected: [],
+                });
+                result.push(obj);
+            })
             return result
         }
         
@@ -162,7 +173,7 @@ export default {
             addObj(allAttributes.value)
 
             //過濾value為undefined
-            modelObj = otherFun.objFilterForVal(modelObj,(item)=>{
+            modelObj = otherFun.objFilterForVal(modelObj, (item)=>{
                 return item !=undefined;
             })
             
@@ -171,13 +182,12 @@ export default {
                 modelObj,
                 schema
             }
-
-            console.log(result);
             return result
         }
 
         //依照inputType格式化
         const textInputEvent = (newValue, model, id) =>{
+
             //跨欄邏輯
             const goNext = (element) =>{
                 // 表單內可 focus 集合
@@ -220,13 +230,29 @@ export default {
             }
         };
 
+        //依照驗證是否通過套用class樣式
+        const vaildClass = (initialData, model) => {
+            const {
+                isValid,
+            } = vaildService(0, initialData, model)
+
+            const result = {
+                'is-invalid' : isValid == null ? false : !isValid,
+                'is-valid' : isValid == null ? false : isValid
+            }
+            return result
+        }
+
+
         return{
             allAttributes,
             typeArr,
             getData,
             textInputEvent,
             otherFun,
-            strFun
+            strFun,
+            vaildService,
+            vaildClass
         }
     }
 }

@@ -48,7 +48,7 @@
         "fields": {
           "type": "input",
           "label": "資料年度(YYY)",
-          "inputType": "year",
+          "inputType": "number",
           "maxLength": 3,
           "required": true,
           "model": "dataYr",
@@ -63,10 +63,10 @@
             "model": "saleAmtTotal",
             "isCol_12":true,
             "analyzeSQLColumn": "營利事業營業收入淨額",
+            "required": true,
             "child": [
               {
                 "inputType": "money",
-                "required": true,
                 "maxLength": 8,
                 "model": "saleAmtTotalStart"
               },
@@ -139,8 +139,7 @@
           "label": "小企業銷售予大企業比率大於等於(%)",
           "model": "sSaleSaleRate",
           "inputType": "number",
-          "analyzeSQLColumn": "小企業銷售予大企業比率",
-          "required": true
+          "analyzeSQLColumn": "小企業銷售予大企業比率"
         }
       },
       {

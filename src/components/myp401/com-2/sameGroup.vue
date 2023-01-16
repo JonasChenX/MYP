@@ -5,19 +5,24 @@
                 <option :value="val.value" v-for="val in selectForm.option" :key="val.label">{{val.label}}</option>
             </select>
         </div>
-
         <div class="col-12 p-0">
             <keep-alive>
                 <component
+                    ref="selectedForm"
                     :is="selectForm.selectId"
                 ></component>
             </keep-alive>
+        </div>
+        <div v-if="selectForm.selectId" class="row m-0 justify-content-end">
+            <div class="col-3">
+                <div class="btn btn-info mb-5 px-4" @click="sub">執行</div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-import { reactive } from '@vue/reactivity';
+import { reactive, ref } from '@vue/reactivity';
 import IM112_0001 from '@/components/myp401/com-2/reportCom/IM112-0001.vue'
 import IM112_0002 from '@/components/myp401/com-2/reportCom/IM112-0002.vue'
 import IM112_0003 from '@/components/myp401/com-2/reportCom/IM112-0003.vue'
@@ -47,8 +52,17 @@ export default {
             selectId:null
         })
 
+        const selectedForm = ref();
+
+        
+        const sub = () => {
+            selectedForm.value.reportFormData.getData()
+        }
+
         return{
-            selectForm
+            selectForm,
+            sub,
+            selectedForm
         }
     }
 }
