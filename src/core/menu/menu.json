@@ -52,6 +52,15 @@
                   "label": "導出Excel",
                   "icon": "tasks"
                 }
+            },
+            {
+                "id": 18,
+                "path": "/myp203",
+                "meta": {
+                  "functionId": "MYP203",
+                  "label": "生成QRCode",
+                  "icon": "tasks"
+                }
             }
         ]
     },
