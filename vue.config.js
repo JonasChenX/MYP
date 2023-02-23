@@ -1,4 +1,5 @@
 const { defineConfig } = require('@vue/cli-service')
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 module.exports = defineConfig({
   transpileDependencies: true,
   devServer: {
@@ -35,7 +36,10 @@ module.exports = defineConfig({
           ]
         }
       ]
-    }
+    },
+    plugins: [
+      new MonacoWebpackPlugin(),
+    ],
   },
   chainWebpack: config => {
     config.plugin("define").tap(definitions => {

@@ -26,9 +26,11 @@ import pagination from '@/components/myp401/com-6/demoPagination.vue'
 import infiniteScroll from '@/components/myp401/com-7/demoInfiniteScroll.vue'
 import slide from '@/components/myp401/com-8/demoSlide.vue'
 import imageUpdate from '@/components/myp401/com-9/demoImageUpdate.vue'
+import onlineCode from '@/components/myp401/com-10/demoOnlineCode.vue'
 
 import { ref } from '@vue/reactivity'
 export default {
+    name: "myp401",
     components:{
         sidebar,
         progressStepsMain,
@@ -39,7 +41,8 @@ export default {
         pagination,
         infiniteScroll,
         slide,
-        imageUpdate
+        imageUpdate,
+        onlineCode
     },
     setup(){
 
