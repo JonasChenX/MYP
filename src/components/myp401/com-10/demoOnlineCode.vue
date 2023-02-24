@@ -2,7 +2,7 @@
   <div class="container">
     <Monaco ref="monaco" :initContent="props.initContent" />
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button class="badge btn btn-dark py-2" @click="runCode()">執行Code</button>
+      <button class="badge btn btn-dark mt-1" @click="runCode()">執行Code</button>
     </div>
   </div>
   <iframe

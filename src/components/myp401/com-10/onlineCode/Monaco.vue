@@ -1,6 +1,6 @@
 <template>
   <div class="monaco text-start">
-    <div class="onlineCode" ref="container"></div>
+    <div id="onlineCode" ref="container"></div>
   </div>
 </template>
 
@@ -29,30 +29,38 @@ export default {
      * **/
     const defaultOptions = {
       language: 'javascript',
-      tabSize: 2,
-      autoIndent: true,
-      theme: 'vs-dark', //設定主題
+      autoIndent: "brackets",
       automaticLayout: true,
-      wordWrap: 'wordWrapColumn',
+      theme: 'vs-dark', //設定主題
       wordWrapColumn: 120,
       lineHeight: 20,
       fontSize: 16,
       minimap: {
-        size: 'fill',
+        enabled: false
       },
-      renderWhitespace: 'boundary'
+      scrollbar: { 
+        alwaysConsumeMouseWheel: false //游標停留在editor也能滑動scrollbar
+      },
+      // overviewRulerLanes: 0,
+      renderWhitespace: 'boundary',
+      scrollBeyondLastLine:false //滾動到最後一行
     };
 
     let editor = null;
     const container = ref()
 
     onMounted(()=>{
-      if (props.diffEditor) {
-        initDiffEditor();
-      } else {
-        initEditor();
-      }
+      initEditor();
     })
+
+    const updateHeight = () => {
+      const onlineCode = document.getElementById('onlineCode');
+      const contentHeight = Math.min(1500, editor.getContentHeight());
+      if(onlineCode){
+        onlineCode.style.height = `${contentHeight}px`;
+      }
+      editor.layout();
+    };
 
     const initEditor = () => {
       editor = monaco.editor.create(container.value, {
@@ -60,19 +68,8 @@ export default {
         ...props.options,
         value: props.initContent,
       });
-      editor.getModel().updateOptions({ tabSize: 8 });
-    }
-
-    const initDiffEditor = () => {
-      editor = monaco.editor.createDiffEditor(container.value, {
-        ...defaultOptions,
-        ...props.options,
-        readOnly: true,
-      });
-      editor.setModel({
-        original: monaco.editor.createModel(props.diffEditor.original),
-        modified: monaco.editor.createModel(props.diffEditor.modified),
-      });
+      editor.getModel().updateOptions({ tabSize: 4});
+      editor.onDidContentSizeChange(updateHeight);
     }
 
     const submit = () => {
@@ -82,9 +79,8 @@ export default {
 
     return{
       container,
-      initDiffEditor,
       initEditor,
-      submit
+      submit,
     }
   }
 };
@@ -93,8 +89,5 @@ export default {
 <style lang="less" scoped>
 .monaco {
   width: 100%;
-  .onlineCode {
-    height: 40vh;
-  }
 }
 </style>
