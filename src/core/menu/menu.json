@@ -24,6 +24,15 @@
                   "label": "技術文章",
                   "icon": "tasks"
                 }
+            },
+            {
+                "id": 19,
+                "path": "/myp103",
+                "meta": {
+                  "functionId": "MYP103",
+                  "label": "LeetCode",
+                  "icon": "tasks"
+                }
             }
         ]
     },

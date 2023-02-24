@@ -1,6 +1,7 @@
 //JS方法Router
 const myp101 = () => import('@/components/myp101/myp101.vue')
 const myp102 = () => import('@/components/myp102/myp102.vue')
+const myp103 = () => import('@/components/myp103/myp103.vue')
 
 export default [
     {
@@ -23,4 +24,14 @@ export default [
           requiresAuth: true
         },
     },
+    {
+      name: 'myp103',
+      path: '/myp103',
+      component: myp103,
+      meta: {
+        functionId: 'MYP103',
+        label: 'LeetCode',
+        requiresAuth: true
+      },
+  },
 ]
