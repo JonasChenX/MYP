@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Monaco ref="monaco" :initContent="props.initContent" />
+    <Monaco ref="monaco" :initContent="props.initContent"/>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
       <button class="badge btn btn-dark mt-1" @click="runCode()">執行Code</button>
     </div>
@@ -43,11 +43,16 @@ console.error('Works fine, no error!')
       iframeDoc.close();
     }
 
+    const setContent = (propContent) => {
+      monaco.value.setContent(propContent);
+    }
+
     return{
       monaco,
       iframe,
       runCode,
-      props
+      props,
+      setContent
     }
   }
 }

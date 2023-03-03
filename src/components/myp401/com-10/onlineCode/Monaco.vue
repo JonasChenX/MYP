@@ -1,5 +1,5 @@
 <template>
-  <div class="monaco text-start">
+  <div class="monaco text-start" >
     <div id="onlineCode" ref="container"></div>
   </div>
 </template>
@@ -66,10 +66,15 @@ export default {
       editor = monaco.editor.create(container.value, {
         ...defaultOptions,
         ...props.options,
-        value: props.initContent,
+        // value: props.initContent,
       });
+      setContent(props.initContent)
       editor.getModel().updateOptions({ tabSize: 4});
       editor.onDidContentSizeChange(updateHeight);
+    }
+
+    const setContent = (propContent) => {
+      editor.getModel().setValue(propContent);
     }
 
     const submit = () => {
@@ -81,6 +86,7 @@ export default {
       container,
       initEditor,
       submit,
+      setContent,
     }
   }
 };

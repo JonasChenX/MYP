@@ -17,7 +17,7 @@
             <div v-if="codeMd">
                 <h3 class="text-start px-4 py-2">解答方法</h3>
                 <div class="text-start pb-4">
-                    <onlineCode :initContent="codeMd" />
+                    <onlineCode :initContent="codeMd" ref="onlineCodeRef"/>
                 </div>
             </div>
             <div v-if="commentaryeMd">
@@ -45,6 +45,8 @@ export default {
         let codeMd = ref('')
         let commentaryeMd = ref('')
 
+        const onlineCodeRef = ref()
+
         const curSideBarName = ref()
         const getMenuName = async(e) => {
             curSideBarName.value = e
@@ -52,13 +54,16 @@ export default {
             //抓example 題目
             if(leetCodeMeta.meta.file.example){
                 await axios.get(`static/leetCode/${curSideBarName.value}/example.md`).then((res)=>{
-                        exampleMd.value = marked(res.data)
+                    exampleMd.value = marked(res.data)
                 })
             }
             //抓code 
             if(leetCodeMeta.meta.file.code){
                 await axios.get(`static/leetCode/${curSideBarName.value}/code.md`).then((res)=>{
-                        codeMd.value = res.data
+                    codeMd.value = res.data
+                    if(onlineCodeRef.value){
+                        onlineCodeRef.value.monaco.setContent(codeMd.value)
+                    }
                 })
             }
             //抓commentary 解說
@@ -75,7 +80,8 @@ export default {
             curSideBarName,
             exampleMd,
             codeMd,
-            commentaryeMd
+            commentaryeMd,
+            onlineCodeRef
         }
     }
 }
