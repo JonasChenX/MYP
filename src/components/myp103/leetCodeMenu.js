@@ -22,5 +22,17 @@ export const leetCodeMenu = [
                 "commentary":false
             }
         },
+    },
+    {
+        "meta":{
+            "id": 3,
+            "label": "Reverse Integer",
+            "name": "leetCode-3", //資料夾
+            "file":{
+                "example":true,
+                "code":true,
+                "commentary":false
+            }
+        },
     }
 ]
