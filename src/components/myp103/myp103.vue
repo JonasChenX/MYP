@@ -30,7 +30,7 @@
 
 <script>
 import { marked } from "marked";
-import { ref } from '@vue/runtime-core';
+import { onMounted, ref } from '@vue/runtime-core';
 import { leetCodeMenu } from '@/components/myp103/leetCodeMenu'
 import axios from 'axios';
 import sidebar from '@/core/sidebar/sidebar.vue'
@@ -73,6 +73,21 @@ export default {
                 })
             }
         }
+
+        const leetCodeMenuReSet = () => {
+            //Label前面加LeetCode編號
+            leetCodeMenu.forEach((item)=>{
+                item.meta.label = item.meta.leetCodeNm + '. ' + item.meta.label
+            })
+            //依照LeetCode編號排序
+            leetCodeMenu.sort((a, b)=>{
+                return a.meta.leetCodeNm < b.meta.leetCodeNm ? -1 : 1
+            })
+        }
+
+        onMounted(()=>{
+            leetCodeMenuReSet()
+        })
 
         return{
             leetCodeMenu,
