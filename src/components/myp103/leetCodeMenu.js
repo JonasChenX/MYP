@@ -37,5 +37,18 @@ export const leetCodeMenu = [
                 "commentary":false
             }
         },
+    },
+    {
+        "meta":{
+            "id": 4,
+            "leetCodeNm":242,
+            "label": "Valid Anagram",
+            "name": "leetCode-4", //資料夾
+            "file":{
+                "example":true,
+                "code":true,
+                "commentary":false
+            }
+        },
     }
 ]
